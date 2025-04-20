@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Block : MonoBehaviour
+public class Blocks : MonoBehaviour
 {
     [SerializeField, Header("スマッシャー")]
     private Smasher smasher;
