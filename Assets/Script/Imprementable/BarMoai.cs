@@ -3,8 +3,8 @@ using Cysharp.Threading.Tasks;
 
 public class BarMoai : BarBase
 {
-    private void OnEnable() => EventBus.OnMoaiLanded += OnStartBar;
-    private void OnDisable() => EventBus.OnMoaiLanded -= OnStartBar;
+    private void OnEnable() => EventBus.I.OnMoaiLanded += OnStartBar;
+    private void OnDisable() => EventBus.I.OnMoaiLanded -= OnStartBar;
 
     private void OnStartBar()
     {
@@ -41,6 +41,6 @@ public class BarMoai : BarBase
         }
 
         float distance = Mathf.Abs(currentValue - targetValue);
-        EventBus.BarStopped(distance);
+        EventBus.I.BarStopped(distance);
     }
 }
