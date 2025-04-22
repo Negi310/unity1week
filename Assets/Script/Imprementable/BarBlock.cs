@@ -33,7 +33,7 @@ public class BarBlock : BarBase
     {
         while (isRunning)
         {
-            currentValue += direction * Time.deltaTime / duration * (maxValue - minValue);
+            currentValue += direction * Time.deltaTime * duration;
 
             if (currentValue >= maxValue)
             {
