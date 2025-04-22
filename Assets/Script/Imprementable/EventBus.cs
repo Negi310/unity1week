@@ -4,12 +4,12 @@ using UnityEngine;
 public class EventBus : MonoBehaviour
 {
     public static EventBus I { get; private set; }
-    public static event Action OnBlockLanded;
-    public static event Action OnMoaiLanded;
-    public static event Action<float, float> OnReceiveSmash;
-    public static event Action OnRequestNextTarget;
-    public static event Action<float> OnBarStopped;       // 距離が送られる
-    public static event Action OnMoaiEyeGlow;
+    public event Action OnBlockLanded;
+    public event Action OnMoaiLanded;
+    public event Action<float, float> OnReceiveSmash;
+    public event Action OnRequestNextTarget;
+    public event Action<float> OnBarStopped;       // 距離が送られる
+    public event Action OnMoaiEyeGlow;
 
     private void Awake()
     {
@@ -22,10 +22,10 @@ public class EventBus : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
-    public static void RequestNextTarget() => OnRequestNextTarget?.Invoke();
-    public static void BlockLanded() => OnBlockLanded?.Invoke();
-    public static void MoaiLanded() => OnMoaiLanded?.Invoke();
-    public static void ReceiveSmash(float inputPower, float score) => OnReceiveSmash?.Invoke(inputPower, score);
-    public static void BarStopped(float distance) => OnBarStopped?.Invoke(distance);
-    public static void MoaiEyeGlow() => OnMoaiEyeGlow?.Invoke();
+    public void RequestNextTarget() => OnRequestNextTarget?.Invoke();
+    public void BlockLanded() => OnBlockLanded?.Invoke();
+    public void MoaiLanded() => OnMoaiLanded?.Invoke();
+    public void ReceiveSmash(float inputPower, float score) => OnReceiveSmash?.Invoke(inputPower, score);
+    public void BarStopped(float distance) => OnBarStopped?.Invoke(distance);
+    public void MoaiEyeGlow() => OnMoaiEyeGlow?.Invoke();
 }

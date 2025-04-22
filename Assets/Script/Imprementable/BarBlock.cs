@@ -6,8 +6,8 @@ public class BarBlock : BarBase
     private int direction = 1;
     private int bounceCount = 0;
 
-    private void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
-    private void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
+    private void OnEnable() => EventBus.I.OnBlockLanded += OnStartBar;
+    private void OnDisable() => EventBus.I.OnBlockLanded -= OnStartBar;
 
     private void OnStartBar()
     {
@@ -52,6 +52,6 @@ public class BarBlock : BarBase
         }
 
         float distance = Mathf.Abs(currentValue - targetValue) + bounceCount * 0.1f;
-        EventBus.BarStopped(distance);
+        EventBus.I.BarStopped(distance);
     }
 }
