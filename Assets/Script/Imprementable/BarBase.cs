@@ -12,8 +12,17 @@ public abstract class BarBase : MonoBehaviour
     protected float targetValue;
     protected bool isRunning = false;
 
-    public abstract void StartBar();
-    //public abstract void StopBar();
+    public virtual void StartBar()
+    {
+        isRunning = true;
+        currentValue = minValue;
+        targetValue = Random.Range(minValue, maxValue);
+        BarLoopAsync().Forget();
+    }
+    public virtual void StopBar()
+    {
+        isRunning = false;
+    }
     protected abstract UniTask BarLoopAsync();
 
 }
