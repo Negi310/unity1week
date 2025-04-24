@@ -14,8 +14,8 @@ public abstract class TargetBase : MonoBehaviour
         SetupVisual();
     }
 
-    protected virtual void OnEnable() => EventBus.I.OnReceiveSmash += OnSmash;
-    protected virtual void OnDisable() => EventBus.I.OnReceiveSmash -= OnSmash;
+    protected virtual void OnEnable() => EventBus.OnReceiveSmash += OnSmash;
+    protected virtual void OnDisable() => EventBus.OnReceiveSmash -= OnSmash;
 
     protected virtual void OnSmash(float inputPower, float score) => rb.AddForce(Vector2.right * td.powerRatio * inputPower, ForceMode2D.Impulse);
 
@@ -38,7 +38,7 @@ public abstract class TargetBase : MonoBehaviour
     private async UniTaskVoid DeactivateAsync()
     {
         await UniTask.Delay(System.TimeSpan.FromSeconds(td.deactiveTime));
-        EventBus.I.RequestNextTarget();
+        EventBus.RequestNextTarget();
         gameObject.SetActive(false); // または Destroy(gameObject);
     }
 }
