@@ -9,21 +9,16 @@ public class BarBlock : BarBase
     private void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
     private void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
 
-    private void OnStartBar()
+    public override void OnStartBar()
     {
-        StartBar();
+        base.OnStartBar();
+        bounceCount = 0;
     }
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space)) return;
         base.StopBar();
-    }
-
-    public override void StartBar()
-    {
-        base.StartBar();
-        bounceCount = 0;
     }
 
     protected override async UniTask BarLoopAsync()
@@ -44,11 +39,9 @@ public class BarBlock : BarBase
                 direction = 1;
                 bounceCount++;
             }
-
             await UniTask.Yield();
         }
-
         float distance = Mathf.Abs(currentValue - targetValue) + bounceCount * 0.1f;
-        EventBus.BarStopped(distance);
+        EventBus.BarStopped(ImputEvaluater.Evaluate(distance));
     }
 }

@@ -12,7 +12,7 @@ public abstract class BarBase : MonoBehaviour
     protected float targetValue;
     protected bool isRunning = false;
 
-    public virtual void StartBar()
+    public virtual void OnStartBar()
     {
         isRunning = true;
         currentValue = minValue;
