@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 using Cysharp.Threading.Tasks;
 
@@ -17,7 +16,7 @@ public abstract class TargetBase : MonoBehaviour
     protected virtual void OnEnable() => EventBus.OnReceiveSmash += OnSmash;
     protected virtual void OnDisable() => EventBus.OnReceiveSmash -= OnSmash;
 
-    protected virtual void OnSmash(float inputPower, float score) => rb.AddForce(Vector2.right * td.powerRatio * inputPower, ForceMode2D.Impulse);
+    protected virtual void OnSmash(float inputPower) => rb.AddForce(Vector2.right * td.powerRatio * inputPower, ForceMode2D.Impulse);
 
     protected virtual void CheckOutOfBounds()
     {
