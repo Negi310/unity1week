@@ -3,13 +3,13 @@ using UnityEngine;
 
 public abstract class BarBase : MonoBehaviour
 {
-    public float duration = 1f;
+    public float duration;
 
-    [SerializeField] protected float minValue = 0f;
-    [SerializeField] protected float maxValue = 100f;
+    public float minValue = 0f;
+    public float maxValue = 100f;
 
-    protected float currentValue;
-    protected float targetValue;
+    public float currentValue;
+    public float targetValue;
     protected bool isRunning = false;
 
     public virtual void OnStartBar()

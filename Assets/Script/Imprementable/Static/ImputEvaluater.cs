@@ -4,7 +4,7 @@ public static class ImputEvaluater
 {
     public static ImputResult Evaluate(float distance)
     {
-        float score = distance;
+        int score = (int)distance;
         float power = distance;
         float hammerSpeed = distance;
 

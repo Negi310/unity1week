@@ -2,11 +2,11 @@ namespace ResultSystem
 {
     public struct ImputResult
     {
-        public float score;
+        public int score;
         public float power;
         public float hammerSpeed;
 
-        public ImputResult(float score, float power, float hammerSpeed)
+        public ImputResult(int score, float power, float hammerSpeed)
         {
             this.score = score;
             this.power = power;
