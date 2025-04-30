@@ -8,8 +8,10 @@ public class BarMoai : BarBase
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space)) return;
-        StopBar();
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            StopBar();
+        }
     }
 
     protected override async UniTask BarLoopAsync()

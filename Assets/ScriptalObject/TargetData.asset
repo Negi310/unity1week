@@ -9,7 +9,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d60ee7fb19922c24eb22c8866ad6ac69, type: 3}
-  m_Name: BlockNormal
+  m_Script: {fileID: 11500000, guid: 33e676d3dc581c141ad4eb0b18c1400a, type: 3}
+  m_Name: TargetData
   m_EditorClassIdentifier: 
-  powerRatio: 1
+  powerRatio: 0
+  rayLength: 0
+  deactiveTime: 0
+  color: {r: 0, g: 0, b: 0, a: 0}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  outLayer:
+    serializedVersion: 2
+    m_Bits: 0
