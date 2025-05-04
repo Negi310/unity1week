@@ -3,10 +3,10 @@ using UnityEngine;
 
 public abstract class BarBase : MonoBehaviour
 {
-    public float duration;
+    [HideInInspector] public float duration;
 
-    public float minValue = 0f;
-    public float maxValue = 100f;
+    [HideInInspector] public float minValue = 0f;
+    [HideInInspector] public float maxValue = 100f;
 
     public float currentValue;
     public float targetValue;
@@ -16,7 +16,7 @@ public abstract class BarBase : MonoBehaviour
     {
         isRunning = true;
         currentValue = minValue;
-        targetValue = Random.Range(minValue, maxValue);
+        targetValue = Random.Range(minValue + 20f, maxValue - 20f);
         BarLoopAsync().Forget();
     }
     public virtual void StopBar()

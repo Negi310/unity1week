@@ -52,17 +52,19 @@ public class BarDisplay : MonoBehaviour
 
     private async void ShutterOpen()
     {
+        if (leftSlider.value <= 25f) return;
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(50f, 0f, 0.2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            DOTweenHelper.LerpAsync(50f, 0f, 0.2f, Ease.InOutQuad, (value) => rightSlider.value = value)
+            DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
+            DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
         );
     }
 
     private async void ShutterClose()
     {
+        if (leftSlider.value >= 25f) return;
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(0f, 50f, 0.2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            DOTweenHelper.LerpAsync(0f, 50f, 0.2f, Ease.InOutQuad, (value) => rightSlider.value = value)
+            DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
+            DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
         );
     }
 }
