@@ -1,12 +1,33 @@
 using ResultSystem;
+using UnityEngine;
 
-public static class ImputEvaluater
+public class ImputEvaluater : MonoBehaviour
 {
-    public static ImputResult Evaluate(float distance)
+    public static ImputEvaluater I;
+
+    public AnimationCurve scoreCurve;
+    
+    public AnimationCurve powerCurve;
+    
+    public AnimationCurve hammerSpeedCurve;
+
+    private void Awake()
     {
-        int score = (int)distance;
+        if (I == null)
+        {
+            I = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+        };
+    }
+
+    public ImputResult Evaluate(float distance)
+    {
+        int score = 1000 * (int)scoreCurve.Evaluate(distance);
         float power = distance;
-        float hammerSpeed = distance;
+        float hammerSpeed = 100f * hammerSpeedCurve.Evaluate(distance);
 
         return new ImputResult(score, power, hammerSpeed);
     }

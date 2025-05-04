@@ -35,6 +35,7 @@ public class HammerAnimation : MonoBehaviour
 
         EventBus.ReceiveScore(cachedResult.score);
         EventBus.ReceiveSmash(cachedResult.power);
+        Debug.Log("Receive");
 
         await UniTask.WhenAll(
             DOTweenHelper.LerpAsync(hammerStartPos, hammerEndPos, 1f/hammerSpeed, Ease.InOutQuad, (value) => this.transform.position = value),

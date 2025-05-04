@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 33e676d3dc581c141ad4eb0b18c1400a, type: 3}
-  m_Name: TargetData
+  m_Name: Block2
   m_EditorClassIdentifier: 
-  powerRatio: 0
-  rayLength: 0
+  powerRatio: 0.8
+  rayLength: 1.05
   deactiveTime: 0
   color: {r: 0, g: 0, b: 0, a: 0}
   groundLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   outLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128

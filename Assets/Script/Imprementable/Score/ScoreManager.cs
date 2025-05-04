@@ -4,7 +4,7 @@ using Cysharp.Threading.Tasks;
 
 public class ScoreManager : MonoBehaviour
 {
-    private int scores;
+    private int scores = 0;
 
     private int comboCount;
 

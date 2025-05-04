@@ -23,6 +23,7 @@ public class BarMoai : BarBase
             if (currentValue == targetValue)
             {
                 EventBus.MoaiEyeGlow();
+                Debug.Log("MoaiEyeGlow");
             }
             if (currentValue >= maxValue)
             {
@@ -36,6 +37,7 @@ public class BarMoai : BarBase
 
         }
         float distance = Mathf.Abs(difference);
-        EventBus.BarStopped(ImputEvaluater.Evaluate(distance));
+        float normalizedDistance = Mathf.Clamp01(distance / 100f);
+        EventBus.BarStopped(ImputEvaluater.I.Evaluate(normalizedDistance));
     }
 }
