@@ -11,12 +11,6 @@ public class AudioManager : MonoBehaviour
 
     public static AudioManager I;
 
-    public enum VolumeParam
-    {
-        SE,
-        BGM
-    }
-
     void Awake()
     {
         if(I == null)

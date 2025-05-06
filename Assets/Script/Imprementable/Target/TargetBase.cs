@@ -31,8 +31,8 @@ public abstract class TargetBase : MonoBehaviour
 
     protected virtual void CheckOutOfBounds()
     {
-        var hitO = Physics2D.Raycast(transform.position, Vector2.down, td.rayLength, td.outLayer);
-        Debug.DrawRay(transform.position, Vector2.down * td.rayLength, Color.blue);
+        var hitO = Physics2D.Raycast(transform.position, Vector2.down, 1.5f * td.rayLength, td.outLayer);
+        Debug.DrawRay(transform.position, Vector2.down * 1.5f * td.rayLength, Color.blue);
 
         if (hitO.collider == null || isOuted) return;
         isOuted = true;
@@ -57,7 +57,7 @@ public abstract class TargetBase : MonoBehaviour
 
     protected virtual void TrackDisable()
     {
-        if (rb.linearVelocity.x > 2f)
+        if (rb.linearVelocity.x > 3f)
         {
             isntTrack = true;
         }

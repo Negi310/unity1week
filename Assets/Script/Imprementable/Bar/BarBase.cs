@@ -25,5 +25,4 @@ public abstract class BarBase : MonoBehaviour
         isRunning = false;
     }
     protected abstract UniTask BarLoopAsync();
-
 }
