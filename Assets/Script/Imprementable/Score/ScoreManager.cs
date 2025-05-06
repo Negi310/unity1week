@@ -1,6 +1,5 @@
 using UnityEngine;
 using ResultSystem;
-using Cysharp.Threading.Tasks;
 
 public class ScoreManager : MonoBehaviour
 {

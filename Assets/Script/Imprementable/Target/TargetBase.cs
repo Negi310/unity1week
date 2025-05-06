@@ -11,6 +11,8 @@ public abstract class TargetBase : MonoBehaviour
 
     protected bool isOuted = false;
 
+    protected bool isntTrack = false;
+
     protected virtual void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -46,9 +48,18 @@ public abstract class TargetBase : MonoBehaviour
 
     protected virtual void TrackCenter()
     {
-        if (isLanded) return;
+        TrackDisable();
+        if (isLanded || isntTrack ) return;
         Vector2 pos = transform.position;
-        pos.x = Mathf.MoveTowards(pos.x, 0f, 0.25f * Time.fixedDeltaTime);
+        pos.x = Mathf.MoveTowards(pos.x, 0f, 0.7f * Time.fixedDeltaTime);
         transform.position = pos;
+    }
+
+    protected virtual void TrackDisable()
+    {
+        if (rb.linearVelocity.x > 2f)
+        {
+            isntTrack = true;
+        }
     }
 }

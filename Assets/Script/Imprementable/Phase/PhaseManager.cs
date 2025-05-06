@@ -20,11 +20,6 @@ public class PhaseManager : MonoBehaviour
         EventBus.OnRequestNextTarget -= HandleObjectOut;
     }
 
-    private void Start()
-    {
-        phases[currentPhaseIndex].Initialize();
-    }
-
     private void FixedUpdate()
     {
         TrackPos(spawnPoint);
@@ -37,13 +32,8 @@ public class PhaseManager : MonoBehaviour
         {
             objectOutCount = 0;
             currentPhaseIndex++;
-            if (currentPhaseIndex < phases.Length)
+            if (currentPhaseIndex > phases.Length)
             {
-                phases[currentPhaseIndex].Initialize();
-            }
-            else
-            {
-                Debug.Log("全フェーズ終了");
                 return;
             }
         }
