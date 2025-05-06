@@ -21,7 +21,11 @@ public class GameManager : MonoBehaviour
 
     public void SetState(GameState newState)
     {
+        if (newState == CurrentState) return;
+
+        GameState PreviousState = CurrentState;
         CurrentState = newState;
+        Debug.Log(CurrentState);
 
         // 状態に応じた処理
         switch (newState)
@@ -29,14 +33,20 @@ public class GameManager : MonoBehaviour
             case GameState.Title:
                 EventBus.StateChanged(GameState.Title);
                 break;
-            case GameState.Playing:
+            case GameState.Playing when PreviousState == GameState.Title:
                 EventBus.StateChanged(GameState.Playing);
+                break;
+            case GameState.Playing when PreviousState == GameState.Pause:
+                EventBus.EscapePause();
                 break;
             case GameState.Result:
                 EventBus.StateChanged(GameState.Result);
                 break;
             case GameState.Pause:
                 EventBus.StateChanged(GameState.Pause);
+                break;
+            case GameState.End:
+                EventBus.StateChanged(GameState.End);
                 break;
         }
     }

@@ -35,7 +35,7 @@ public class BarDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (!bar.isRunning) return;
+        if (bar.isRunning == 0) return;
 
         float normalizedCurrent = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.currentValue);
         float normalizedTarget = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.targetValue);

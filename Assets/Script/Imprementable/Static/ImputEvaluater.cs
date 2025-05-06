@@ -7,8 +7,6 @@ public class ImputEvaluater : MonoBehaviour
 
     public AnimationCurve scoreCurve;
     
-    public AnimationCurve powerCurve;
-    
     public AnimationCurve hammerSpeedCurve;
 
     private void Awake()

@@ -12,6 +12,6 @@ public class CliickManager : MonoBehaviour
     public void OnTitle()
     {
         if (GameManager.I.CurrentState != GameState.Result && GameManager.I.CurrentState != GameState.Pause) return;
-        SceneManager.LoadScene("GameScene");
+        GameManager.I.SetState(GameState.End);
     }
 }
