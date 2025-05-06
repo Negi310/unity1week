@@ -36,7 +36,7 @@ public class BarDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bar == null) return;
+        if (!bar.isRunning) return;
 
         float normalizedCurrent = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.currentValue);
         float normalizedTarget = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.targetValue);
@@ -50,21 +50,21 @@ public class BarDisplay : MonoBehaviour
         targetMarker.anchoredPosition = targetPos;
     }
 
-    private async void ShutterOpen()
+    private async void ShutterOpen(float barDuration)
     {
         if (leftSlider.value <= 25f) return;
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
+            //DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
+            //DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
         );
     }
 
-    private async void ShutterClose()
+    private async void ShutterClose(float barDuration)
     {
         if (leftSlider.value >= 25f) return;
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
+            //DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
+            //DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
         );
     }
 }

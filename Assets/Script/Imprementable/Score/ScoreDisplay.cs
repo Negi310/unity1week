@@ -16,14 +16,14 @@ public class ScoreDisplay : MonoBehaviour
     private void OnEnable()
     {
         EventBus.OnScoreChanged += UpdateScoreDisplay;
-        EventBus.OnScoreRanked += ShowRankUp;
+        //EventBus.OnScoreRanked += ShowRankUp;
         addedScoreColor = addedScoreText.color;
     }
 
     private void OnDisable()
     {
         EventBus.OnScoreChanged -= UpdateScoreDisplay;
-        EventBus.OnScoreRanked -= ShowRankUp;
+        //EventBus.OnScoreRanked -= ShowRankUp;
     }
 
     private void UpdateScoreDisplay(ScoreResult result)
@@ -37,33 +37,33 @@ public class ScoreDisplay : MonoBehaviour
     private async void ScoreAnimation(ScoreResult result)
     {
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(result.scores - result.score, result.scores, 1f, Ease.InOutQuad, (value) =>
-            {
-                currentTotalScore = value;
-                totalScoreText.text =  $"+{value}";
-            }),
-            DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
-            DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
+            //DOTweenHelper.LerpAsync(result.scores - result.score, result.scores, 1f, Ease.InOutQuad, (value) =>
+            //{
+                //currentTotalScore = value;
+                //totalScoreText.text =  $"+{value}";
+            //}),
+            //DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
+            //DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
         );
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
-            DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
+            //DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
+            //DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
         );
     }
 
     private async void AddedScoreAnimation()
     {
         await UniTask.WhenAll(
-            DOTweenHelper.LerpAsync(0f, 1f, 0.1f, Ease.InOutQuad, (value) => addedScoreColor.a = value),
-            DOTweenHelper.LerpAsync(new Vector2(0f,0f), new Vector2(0f,1f), 0.1f, Ease.InOutQuad, (value) => addedScoreText.rectTransform.localPosition = value)
+           // DOTweenHelper.LerpAsync(0f, 1f, 0.1f, Ease.InOutQuad, (value) => addedScoreColor.a = value),
+            //DOTweenHelper.LerpAsync(new Vector2(0f,0f), new Vector2(0f,1f), 0.1f, Ease.InOutQuad, (value) => addedScoreText.rectTransform.localPosition = value)
         );
-        await DOTweenHelper.LerpAsync(1f, 0f, 0.5f, Ease.InOutQuad, (value) => addedScoreColor.a = value);
+        //await DOTweenHelper.LerpAsync(1f, 0f, 0.5f, Ease.InOutQuad, (value) => addedScoreColor.a = value);
     }
 
-    private async void ShowRankUp(int newRank)
-    {
-        rankText.text = $"Rank {newRank}!";
-        await DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
-        await DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
-    }
+    //private async void ShowRankUp(int newRank)
+    //{
+        //rankText.text = $"Rank {newRank}!";
+        //await DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
+        //await DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
+    //}
 }

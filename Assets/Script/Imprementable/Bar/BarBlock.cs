@@ -9,9 +9,9 @@ public class BarBlock : BarBase
     private void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
     private void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
 
-    public override void OnStartBar()
+    public override void OnStartBar(float barDuration)
     {
-        base.OnStartBar();
+        base.OnStartBar(barDuration);
         bounceCount = 0;
     }
 

@@ -4,9 +4,9 @@ using UnityEngine;
 public class TargetData : ScriptableObject
 {
     public AnimationCurve powerCurve;
+    public float barDuration;
     public float rayLength;
     public float deactiveTime;
-    public Color color;
     public LayerMask groundLayer;
     public LayerMask outLayer;
 }
