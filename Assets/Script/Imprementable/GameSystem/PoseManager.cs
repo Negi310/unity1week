@@ -10,16 +10,11 @@ public class PoseManager : MonoBehaviour
         {
             if(GameManager.I.CurrentState == GameState.Playing)
             {
-                pause = Instantiate(pauseUI,this.transform);
-                Time.timeScale = 0;
                 GameManager.I.SetState(GameState.Pause);
+                Time.timeScale = 0;
             }
             else if(GameManager.I.CurrentState == GameState.Pause)
             {
-                if(pause != null)
-                {
-                    Destroy(pause);
-                }
                 Time.timeScale = 1.0f; 
                 GameManager.I.SetState(GameState.Playing);
             }

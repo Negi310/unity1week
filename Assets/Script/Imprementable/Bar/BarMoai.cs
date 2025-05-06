@@ -6,17 +6,9 @@ public class BarMoai : BarBase
     private void OnEnable() => EventBus.OnMoaiLanded += OnStartBar;
     private void OnDisable() => EventBus.OnMoaiLanded -= OnStartBar;
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopBar();
-        }
-    }
-
     protected override async UniTask BarLoopAsync()
     {
-        while (isRunning)
+        while (isRunning > 0)
         {
             currentValue += Time.deltaTime * duration;
 

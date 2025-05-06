@@ -15,17 +15,9 @@ public class BarBlock : BarBase
         bounceCount = 0;
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            StopBar();
-        }
-    }
-
     protected override async UniTask BarLoopAsync()
     {
-        while (isRunning)
+        while (isRunning > 0)
         {
             currentValue += direction * Time.deltaTime * duration;
 

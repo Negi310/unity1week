@@ -7,14 +7,14 @@ public abstract class BarBase : MonoBehaviour
 
     [HideInInspector] public float minValue = 0f;
     [HideInInspector] public float maxValue = 100f;
-    [HideInInspector] public bool isRunning = false;
+    [HideInInspector, Min(0)] public int isRunning = 0;
 
     public float currentValue;
     public float targetValue;
 
     public virtual void OnStartBar(float barDuration)
     {
-        isRunning = true;
+        isRunning = 1;
         duration = barDuration;
         currentValue = minValue;
         targetValue = Random.Range(minValue + 20f, maxValue - 20f);
@@ -22,7 +22,16 @@ public abstract class BarBase : MonoBehaviour
     }
     public virtual void StopBar()
     {
-        isRunning = false;
+        isRunning -= 1;
     }
+
+    public virtual void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space) && GameManager.I.CurrentState == GameState.Playing)
+        {
+            StopBar();
+        }
+    }
+
     protected abstract UniTask BarLoopAsync();
 }
