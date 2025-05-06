@@ -1,7 +1,24 @@
 using UnityEngine;
+using Cysharp.Threading.Tasks;
 
 public class TargetMoai : TargetBase
 {
+    [SerializeField] private Transform moaiEye;
+
+    [SerializeField] private LerpParams eyeParam;
+
+    protected override void OnEnable()
+    {
+        base.OnEnable();
+        EventBus.OnMoaiEyeGlow += HandleEyeGlow;
+    }
+
+    protected override void OnDisable()
+    {
+        base.OnDisable();
+        EventBus.OnMoaiEyeGlow -= HandleEyeGlow;
+    }
+
     private void FixedUpdate()
     {
         TrackCenter();
@@ -10,5 +27,15 @@ public class TargetMoai : TargetBase
         if (hit.collider == null || isLanded) return;
         EventBus.MoaiLanded(td.barDuration); // イベント発火！
         isLanded = true;
+    }
+
+    private void HandleEyeGlow()
+    {
+        EyeGlow().Forget();
+    }
+
+    private async UniTask EyeGlow()
+    {
+        await UniTask.Yield();
     }
 }

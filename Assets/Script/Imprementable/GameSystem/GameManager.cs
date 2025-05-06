@@ -2,14 +2,6 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public enum GameState
-    {
-        Title,
-        Playing,
-        Result,
-        Pause
-    }
-
     public static GameManager I { get; private set; }
 
     public GameState CurrentState { get; private set; }
@@ -35,37 +27,17 @@ public class GameManager : MonoBehaviour
         switch (newState)
         {
             case GameState.Title:
-                ShowTitleScreen();
+                EventBus.StateChanged(GameState.Title);
                 break;
             case GameState.Playing:
-                StartGameplay();
+                EventBus.StateChanged(GameState.Playing);
                 break;
             case GameState.Result:
-                ShowResult();
+                EventBus.StateChanged(GameState.Result);
                 break;
             case GameState.Pause:
-                PauseGame();
+                EventBus.StateChanged(GameState.Pause);
                 break;
         }
-    }
-
-    private void ShowTitleScreen()
-    {
-        // タイトル画面の表示ロジック
-    }
-
-    private void StartGameplay()
-    {
-        // ゲーム開始時の初期化など
-    }
-
-    private void ShowResult()
-    {
-        // リザルト画面表示処理
-    }
-
-    private void PauseGame()
-    {
-        // ポーズ処理
     }
 }

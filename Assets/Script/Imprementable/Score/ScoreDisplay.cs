@@ -6,6 +6,7 @@ using DG.Tweening;
 
 public class ScoreDisplay : MonoBehaviour
 {
+    [SerializeField] private LerpParams[] scoreTextParam;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI addedScoreText;
     [SerializeField] private TextMeshProUGUI comboText;
@@ -16,14 +17,14 @@ public class ScoreDisplay : MonoBehaviour
     private void OnEnable()
     {
         EventBus.OnScoreChanged += UpdateScoreDisplay;
-        //EventBus.OnScoreRanked += ShowRankUp;
+        EventBus.OnScoreRanked += ShowRankUp;
         addedScoreColor = addedScoreText.color;
     }
 
     private void OnDisable()
     {
         EventBus.OnScoreChanged -= UpdateScoreDisplay;
-        //EventBus.OnScoreRanked -= ShowRankUp;
+        EventBus.OnScoreRanked -= ShowRankUp;
     }
 
     private void UpdateScoreDisplay(ScoreResult result)
@@ -31,10 +32,10 @@ public class ScoreDisplay : MonoBehaviour
         addedScoreText.text = $"+{result.score}";
         comboText.text = $"{result.comboCount}Combo!";
         AddedScoreAnimation();
-        ScoreAnimation(result);
+        ScoreAnimation(result).Forget();
     }
 
-    private async void ScoreAnimation(ScoreResult result)
+    private async UniTask ScoreAnimation(ScoreResult result)
     {
         await UniTask.WhenAll(
             //DOTweenHelper.LerpAsync(result.scores - result.score, result.scores, 1f, Ease.InOutQuad, (value) =>
@@ -60,10 +61,9 @@ public class ScoreDisplay : MonoBehaviour
         //await DOTweenHelper.LerpAsync(1f, 0f, 0.5f, Ease.InOutQuad, (value) => addedScoreColor.a = value);
     }
 
-    //private async void ShowRankUp(int newRank)
-    //{
-        //rankText.text = $"Rank {newRank}!";
-        //await DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
-        //await DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 0.5f, Ease.InOutQuad, (value) => rankText.rectTransform.localScale = value);
-    //}
+    private async void ShowRankUp(int newRank)
+    {
+        rankText.text = $"Rank {newRank}!";
+        await UniTask.WhenAll();
+    }
 }

@@ -5,10 +5,10 @@ using DG.Tweening;
 
 public class HammerAnimation : MonoBehaviour
 {
-    [SerializeField] private Vector3 hammerStartPos;
-    [SerializeField] private Vector3 hammerEndPos;
-    [SerializeField] private Quaternion hammerStartRot;
-    [SerializeField] private Quaternion hammerEndRot;
+    [SerializeField] private LerpParams[] hammerParam;
+
+    [SerializeField] private Transform hammer;
+
     private ImputResult cachedResult;
 
     private void OnEnable() => EventBus.OnBarStopped += OnSmashEvaluated;
@@ -18,12 +18,12 @@ public class HammerAnimation : MonoBehaviour
     private void OnSmashEvaluated(ImputResult result)
     {
         cachedResult = result;
-        AnimateHammer(result.hammerSpeed);
+        AnimateHammer(result.hammerSpeed).Forget();
     }
 
-    private async void AnimateHammer(float hammerSpeed)
+    private async UniTask AnimateHammer(float hammerSpeed)
     {
-        
+        await UniTask.Yield();
         await UniTask.WhenAll(
             //DOTweenHelper.LerpAsync(hammerStartPos, hammerEndPos, 1f/hammerSpeed, Ease.InOutQuad, (value) => this.transform.position = value),
             //DOTweenHelper.LerpAsync(hammerStartRot, hammerEndRot, 1f/hammerSpeed, Ease.InOutQuad, (value) => this.transform.rotation = value)
