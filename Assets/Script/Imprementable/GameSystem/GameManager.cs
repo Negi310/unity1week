@@ -6,7 +6,7 @@ public class GameManager : MonoBehaviour
 
     public GameState CurrentState { get; private set; }
 
-    void Awake()
+    void Start()
     {
         if(I == null)
         {
@@ -21,11 +21,8 @@ public class GameManager : MonoBehaviour
 
     public void SetState(GameState newState)
     {
-        if (newState == CurrentState) return;
-
         GameState PreviousState = CurrentState;
         CurrentState = newState;
-        Debug.Log(CurrentState);
 
         // 状態に応じた処理
         switch (newState)
