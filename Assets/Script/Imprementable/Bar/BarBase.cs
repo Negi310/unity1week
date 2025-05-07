@@ -11,6 +11,8 @@ public abstract class BarBase : MonoBehaviour
 
     public float currentValue;
     public float targetValue;
+    public float targetValue2;
+    public float targetValue3;
 
     public virtual void OnStartBar(float barDuration)
     {
@@ -33,5 +35,5 @@ public abstract class BarBase : MonoBehaviour
         }
     }
 
-    protected abstract UniTask BarLoopAsync();
+    public abstract UniTask BarLoopAsync();
 }

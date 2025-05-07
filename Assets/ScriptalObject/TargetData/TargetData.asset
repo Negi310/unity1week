@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33e676d3dc581c141ad4eb0b18c1400a, type: 3}
+  m_Name: TargetData
+  m_EditorClassIdentifier: 
+  powerCurve:
+    serializedVersion: 2
+    m_Curve: []
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  barDuration: 0
+  rayLength: 0
+  deactiveTime: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  outLayer:
+    serializedVersion: 2
+    m_Bits: 0

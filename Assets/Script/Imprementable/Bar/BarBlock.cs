@@ -3,11 +3,11 @@ using Cysharp.Threading.Tasks;
 
 public class BarBlock : BarBase
 {
-    private int direction = 1;
-    private int bounceCount = 0;
+    [HideInInspector] public int direction = 1;
+    [HideInInspector] public int bounceCount = 0;
 
-    private void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
-    private void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
+    public void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
+    public void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
 
     public override void OnStartBar(float barDuration)
     {
@@ -15,7 +15,7 @@ public class BarBlock : BarBase
         bounceCount = 0;
     }
 
-    protected override async UniTask BarLoopAsync()
+    public override async UniTask BarLoopAsync()
     {
         while (isRunning > 0)
         {

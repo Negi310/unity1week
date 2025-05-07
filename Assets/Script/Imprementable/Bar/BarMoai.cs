@@ -6,7 +6,7 @@ public class BarMoai : BarBase
     private void OnEnable() => EventBus.OnMoaiLanded += OnStartBar;
     private void OnDisable() => EventBus.OnMoaiLanded -= OnStartBar;
 
-    protected override async UniTask BarLoopAsync()
+    public override async UniTask BarLoopAsync()
     {
         while (isRunning > 0)
         {

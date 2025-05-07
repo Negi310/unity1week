@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "Phase", menuName = "Scriptable Objects/Phase")]
-public abstract class PhaseBase : ScriptableObject, IPhase
+public class PhaseBase : ScriptableObject, IPhase
 {
     [SerializeField] protected GameObject[] targetPrefabs;
     [SerializeField] protected int objectsPerPhase = 10;

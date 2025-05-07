@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
 using Cysharp.Threading.Tasks;
+using System.Threading;
 
 public class BarDisplay : MonoBehaviour
 {
     [SerializeField] private RectTransform barFill;      // 現在値の表示バー
     [SerializeField] private RectTransform targetMarker; // ターゲット位置のマーカー
+    [SerializeField] private RectTransform targetMarker2;
+    [SerializeField] private RectTransform targetMarker3;
     [SerializeField] private Image moaiShutterImage;     // モアイ用のシャッター表示
 
     [SerializeField] private BarBase bar;                // 対象となるバー
@@ -37,16 +40,17 @@ public class BarDisplay : MonoBehaviour
     {
         if (bar.isRunning == 0) return;
 
-        float normalizedCurrent = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.currentValue);
-        float normalizedTarget = Mathf.InverseLerp(bar.minValue, bar.maxValue, bar.targetValue);
+        DisplayBar(bar.currentValue, barFill);
+        DisplayBar(bar.targetValue, targetMarker);
 
-        Vector2 barPosition = barFill.anchoredPosition;
-        barPosition.x = normalizedCurrent * barWidth;
-        barFill.anchoredPosition = barPosition;
+    }
 
-        Vector2 targetPos = targetMarker.anchoredPosition;
-        targetPos.x = normalizedTarget * barWidth;
-        targetMarker.anchoredPosition = targetPos;
+    private void DisplayBar(float value, RectTransform rect)
+    {
+        float normalizedValue = Mathf.InverseLerp(bar.minValue, bar.maxValue, value);
+        Vector2 pos = rect.anchoredPosition;
+        pos.x = normalizedValue * barWidth;
+        rect.anchoredPosition = pos;
     }
 
     private async void ShutterOpen(float barDuration)
