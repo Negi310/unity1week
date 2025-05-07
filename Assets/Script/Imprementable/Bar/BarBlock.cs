@@ -6,8 +6,8 @@ public class BarBlock : BarBase
     [HideInInspector] public int direction = 1;
     [HideInInspector] public int bounceCount = 0;
 
-    public void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
-    public void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
+    private void OnEnable() => EventBus.OnBlockLanded += OnStartBar;
+    private void OnDisable() => EventBus.OnBlockLanded -= OnStartBar;
 
     public override void OnStartBar(float barDuration)
     {

@@ -9,25 +9,34 @@ public class BarDisplay : MonoBehaviour
     [SerializeField] private RectTransform targetMarker; // ターゲット位置のマーカー
     [SerializeField] private RectTransform targetMarker2;
     [SerializeField] private RectTransform targetMarker3;
-    [SerializeField] private Image moaiShutterImage;     // モアイ用のシャッター表示
+    [SerializeField] private GameObject moaiShutter;     // モアイ用のシャッター表示
 
     [SerializeField] private BarBase bar;                // 対象となるバー
     [SerializeField] private RectTransform barArea;      // バーの全体領域（UI上の範囲）
-
-    [SerializeField] private Slider leftSlider;
-    [SerializeField] private Slider rightSlider;
 
     private float barWidth;
 
     private void OnEnable()
     {
         EventBus.OnMoaiLanded += ShutterClose;
+        EventBus.OnDoubleMoaiLanded += ShutterClose;
+        EventBus.OnTripleMoaiLanded += ShutterClose;
+        EventBus.OnDoubleBlockLanded += ShutterOpen;
+        EventBus.OnTripleBlockLanded += ShutterOpen;
+        EventBus.OnDynaBlockLanded += ShutterOpen;
+        EventBus.OnDoubleDynaBlockLanded += ShutterOpen;
         EventBus.OnBlockLanded += ShutterOpen;
     }
 
     private void OnDisable()
     {
         EventBus.OnMoaiLanded -= ShutterClose;
+        EventBus.OnDoubleMoaiLanded -= ShutterClose;
+        EventBus.OnTripleMoaiLanded -= ShutterClose;
+        EventBus.OnDoubleBlockLanded -= ShutterOpen;
+        EventBus.OnTripleBlockLanded -= ShutterOpen;
+        EventBus.OnDynaBlockLanded -= ShutterOpen;
+        EventBus.OnDoubleDynaBlockLanded -= ShutterOpen;
         EventBus.OnBlockLanded -= ShutterOpen;
     }
 
@@ -42,7 +51,8 @@ public class BarDisplay : MonoBehaviour
 
         DisplayBar(bar.currentValue, barFill);
         DisplayBar(bar.targetValue, targetMarker);
-
+        DisplayBar(bar.targetValue2, targetMarker2);
+        DisplayBar(bar.targetValue3, targetMarker3);
     }
 
     private void DisplayBar(float value, RectTransform rect)
@@ -53,21 +63,13 @@ public class BarDisplay : MonoBehaviour
         rect.anchoredPosition = pos;
     }
 
-    private async void ShutterOpen(float barDuration)
+    private void ShutterOpen(float barDuration)
     {
-        if (leftSlider.value <= 25f) return;
-        await UniTask.WhenAll(
-            //DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            //DOTweenHelper.LerpAsync(50f, 0f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
-        );
+        moaiShutter.SetActive(false);
     }
 
-    private async void ShutterClose(float barDuration)
+    private void ShutterClose(float barDuration)
     {
-        if (leftSlider.value >= 25f) return;
-        await UniTask.WhenAll(
-            //DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => leftSlider.value = value),
-            //DOTweenHelper.LerpAsync(0f, 50f, 2f, Ease.InOutQuad, (value) => rightSlider.value = value)
-        );
+        moaiShutter.SetActive(true);
     }
 }

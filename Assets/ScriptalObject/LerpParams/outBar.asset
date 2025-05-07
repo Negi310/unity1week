@@ -12,30 +12,57 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 74854f054f8141a45bd1c984663d1684, type: 3}
   m_Name: outBar
   m_EditorClassIdentifier: 
-  duration: 1
+  duration: 0.3
   curve:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
       time: 0
       value: 0
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: -0.8733204
+      outSlope: -0.8733204
+      tangentMode: 0
       weightedMode: 0
       inWeight: 0
-      outWeight: 0
+      outWeight: 0.08911761
+    - serializedVersion: 3
+      time: 0.36546832
+      value: -0.09610124
+      inSlope: -0.045569696
+      outSlope: -0.045569696
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.053992055
+      outWeight: 0.071821816
+    - serializedVersion: 3
+      time: 0.8357715
+      value: 0.29036474
+      inSlope: 1.8650405
+      outSlope: 1.8650405
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.06949876
+      outWeight: 0.23735766
+    - serializedVersion: 3
+      time: 0.9582578
+      value: 0.6955928
+      inSlope: 4.765144
+      outSlope: 4.765144
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.1685296
+      outWeight: 0.3265438
     - serializedVersion: 3
       time: 1
       value: 1
-      inSlope: 1
-      outSlope: 1
-      tangentMode: 34
+      inSlope: 11.667363
+      outSlope: 11.667363
+      tangentMode: 0
       weightedMode: 0
-      inWeight: 0
+      inWeight: 0.24816726
       outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  start: {x: 0, y: 0}
-  end: {x: 0, y: 0}
+  start: {x: 212, y: 85}
+  end: {x: 600, y: 85}

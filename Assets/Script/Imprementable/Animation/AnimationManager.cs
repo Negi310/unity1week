@@ -1,13 +1,18 @@
 using UnityEngine;
 using Cysharp.Threading.Tasks;
-using DG.Tweening;
+using DG.Tweening.Core;
 using System;
 using ResultSystem;
 using UnityEngine.UI;
+using System.Threading.Tasks;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class AnimationManager : MonoBehaviour
 {
     [SerializeField] private LerpParams[] param;
+
+    [SerializeField] private ScoreManager sm;
 
     [SerializeField] private Image transitioner;
 
@@ -15,16 +20,22 @@ public class AnimationManager : MonoBehaviour
     [SerializeField] private RectTransform barRect;
     [SerializeField] private RectTransform scoreRect;
     [SerializeField] private RectTransform resultRect;
-    [SerializeField] private RectTransform barFlashRect;
 
+    [SerializeField] private CanvasGroup barFlash;
     [SerializeField] private CanvasGroup titleAlpha;
     [SerializeField] private CanvasGroup startAlpha;
 
     [SerializeField] private Transform hammer;
 
     [SerializeField] private GameObject fence;
+    [SerializeField] private GameObject startButton;
     [SerializeField] private GameObject playCanvas;
     [SerializeField] private GameObject pauseCanvas;
+    [SerializeField] private GameObject resultCanvas;
+
+    [SerializeField] private AnimationCurve curve;
+
+    [SerializeField] private TextMeshProUGUI scoreText;
 
     private void OnEnable()
     {
@@ -77,6 +88,7 @@ public class AnimationManager : MonoBehaviour
 
     private async UniTask StartGameplay()
     {
+        startButton.SetActive(false);
         await UniTask.WhenAll(
             param[4].RunLerp(value => startAlpha.alpha = (float)value),
             param[4].RunLerp(value => titleAlpha.alpha = (float)value),
@@ -92,21 +104,33 @@ public class AnimationManager : MonoBehaviour
 
     private async UniTask ShowResult()
     {
+        float to = (float)sm.scores;
         await UniTask.WhenAll(
             param[9].RunLerp(value => barRect.anchoredPosition = (Vector2)value),
             param[10].RunLerp(value => scoreRect.anchoredPosition = (Vector2)value)
         );
         await param[11].RunLerp(value => resultRect.anchoredPosition = (Vector2)value);
+        await DOTweenHelper.LerpAsync(0f, to, 3f, curve, (value) =>
+            {
+                int scoreInt = (int)value;
+                scoreText.text =  $"Score: {scoreInt}";
+            });
     }
 
     private async UniTask EndGame()
     {
-        await param[1].RunLerp(value => transitioner.material.SetFloat("transition", (float)value));
+        Time.timeScale = 1.0f;
+        pauseCanvas.SetActive(false);
+        playCanvas.SetActive(false);
+        resultCanvas.SetActive(false);
+        await param[1].RunLerp(value => transitioner.material.SetFloat("_Transition", (float)value));
+        await Task.Delay(1000);
+        SceneManager.LoadScene("GameScene");
     }
 
     private async UniTask BarFlash()
     {
-        await param[12].RunLerp(value => barFlashRect.anchoredPosition = (Vector2)value);
+        await param[12].RunLerp(value => barFlash.alpha = (float)value);
     }
 
     private void PauseGame()

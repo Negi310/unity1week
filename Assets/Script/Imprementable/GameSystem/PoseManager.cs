@@ -2,8 +2,6 @@ using UnityEngine;
 
 public class PoseManager : MonoBehaviour
 {
-    public GameObject pauseUI;
-    GameObject pause;
     void Update()
     {
         if(Input.GetKeyDown(KeyCode.P))

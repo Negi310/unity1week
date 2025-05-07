@@ -34,7 +34,7 @@ public class PhaseManager : MonoBehaviour
             currentPhaseIndex++;
             if (currentPhaseIndex > phases.Length)
             {
-                return;
+                currentPhaseIndex = phases.Length;
             }
         }
         SpawnNext();

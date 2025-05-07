@@ -6,8 +6,6 @@ public class ImputEvaluater : MonoBehaviour
     public static ImputEvaluater I;
 
     public AnimationCurve scoreCurve;
-    
-    public AnimationCurve hammerSpeedCurve;
 
     private void Awake()
     {
@@ -23,9 +21,9 @@ public class ImputEvaluater : MonoBehaviour
 
     public ImputResult Evaluate(float distance)
     {
-        int score = 1000 * (int)scoreCurve.Evaluate(distance);
+        int score = (int)(1000f * scoreCurve.Evaluate(distance));
         float power = distance;
-        float hammerSpeed = 100f * hammerSpeedCurve.Evaluate(distance);
+        float hammerSpeed = distance;
 
         return new ImputResult(score, power, hammerSpeed);
     }
