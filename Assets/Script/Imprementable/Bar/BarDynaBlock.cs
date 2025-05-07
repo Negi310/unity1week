@@ -5,6 +5,8 @@ public class BarDynaBlock : BarBlock
 {
     private int targetDirection = 1;
 
+    private void OnEnable() => EventBus.OnDynaBlockLanded += OnStartBar;
+    private void OnDisable() => EventBus.OnDynaBlockLanded -= OnStartBar;
     public override void OnStartBar(float barDuration)
     {
         base.OnStartBar(barDuration);

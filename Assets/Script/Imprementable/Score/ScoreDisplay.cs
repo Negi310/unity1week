@@ -6,19 +6,19 @@ using DG.Tweening;
 
 public class ScoreDisplay : MonoBehaviour
 {
-    [SerializeField] private LerpParams[] scoreTextParam;
+    [SerializeField] private AnimationCurve[] scoreCurve;
+    [SerializeField] private Vector3[] scoreScale;
+    [SerializeField] private Vector2[] scorePos;
+    [SerializeField] private CanvasGroup addedScoreCanvas;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI addedScoreText;
     [SerializeField] private TextMeshProUGUI comboText;
     [SerializeField] private TextMeshProUGUI rankText;
-    private Color addedScoreColor;
-    private int currentTotalScore;
 
     private void OnEnable()
     {
         EventBus.OnScoreChanged += UpdateScoreDisplay;
         EventBus.OnScoreRanked += ShowRankUp;
-        addedScoreColor = addedScoreText.color;
     }
 
     private void OnDisable()
@@ -30,40 +30,43 @@ public class ScoreDisplay : MonoBehaviour
     private void UpdateScoreDisplay(ScoreResult result)
     {
         addedScoreText.text = $"+{result.score}";
-        comboText.text = $"{result.comboCount}Combo!";
-        AddedScoreAnimation();
+        ComboAnimation(result).Forget();
+        AddedScoreAnimation().Forget();
         ScoreAnimation(result).Forget();
     }
 
     private async UniTask ScoreAnimation(ScoreResult result)
     {
+        float from = (float)(result.scores - result.score);
+        float to = (float)result.scores;
         await UniTask.WhenAll(
-            //DOTweenHelper.LerpAsync(result.scores - result.score, result.scores, 1f, Ease.InOutQuad, (value) =>
-            //{
-                //currentTotalScore = value;
-                //totalScoreText.text =  $"+{value}";
-            //}),
-            //DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
-            //DOTweenHelper.LerpAsync(new Vector3(1f,1f,1f), new Vector3(2f,2f,2f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
-        );
-        await UniTask.WhenAll(
-            //DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value),
-            //DOTweenHelper.LerpAsync(new Vector3(2f,2f,2f), new Vector3(1f,1f,1f), 1f, Ease.InOutQuad, (value) => totalScoreText.rectTransform.localScale = value)
+            DOTweenHelper.LerpAsync(from, to, 1f, scoreCurve[0], (value) =>
+            {
+                int scoreInt = (int)value;
+                totalScoreText.text =  $"Score: {scoreInt}";
+            }),
+            DOTweenHelper.LerpAsync(scoreScale[0], scoreScale[1], 1f, scoreCurve[1], (value) => totalScoreText.rectTransform.localScale = value)
         );
     }
 
-    private async void AddedScoreAnimation()
+    private async UniTask ComboAnimation(ScoreResult result)
     {
-        await UniTask.WhenAll(
-           // DOTweenHelper.LerpAsync(0f, 1f, 0.1f, Ease.InOutQuad, (value) => addedScoreColor.a = value),
-            //DOTweenHelper.LerpAsync(new Vector2(0f,0f), new Vector2(0f,1f), 0.1f, Ease.InOutQuad, (value) => addedScoreText.rectTransform.localPosition = value)
-        );
-        //await DOTweenHelper.LerpAsync(1f, 0f, 0.5f, Ease.InOutQuad, (value) => addedScoreColor.a = value);
+        if (result.comboCount == 0) return;
+        comboText.text = $"{result.comboCount}Combo!";
+        await DOTweenHelper.LerpAsync(scoreScale[0], scoreScale[1], 1f, scoreCurve[1], (value) => comboText.rectTransform.localScale = value);
     }
 
-    private async void ShowRankUp(int newRank)
+    private async UniTask AddedScoreAnimation()
     {
-        rankText.text = $"Rank {newRank}!";
-        await UniTask.WhenAll();
+        await UniTask.WhenAll(
+            DOTweenHelper.LerpAsync(0f, 1f, 0.7f, scoreCurve[2], (value) => addedScoreCanvas.alpha = value),
+            DOTweenHelper.LerpAsync(scorePos[0], scorePos[1], 1f, scoreCurve[3], (value) => addedScoreText.rectTransform.localPosition = value)
+        );
+    }
+
+    private async void ShowRankUp(string newRank)
+    {
+        rankText.text = $"Rank: {newRank}!";
+        await DOTweenHelper.LerpAsync(scoreScale[0], scoreScale[1], 1f, scoreCurve[1], (value) => rankText.rectTransform.localScale = value);
     }
 }

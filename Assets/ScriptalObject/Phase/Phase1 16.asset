@@ -1,0 +1,39 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a92ee856340e1d46976acacc7bf4602, type: 3}
+  m_Name: Phase1 16
+  m_EditorClassIdentifier: 
+  targetPrefabs:
+  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
+  - {fileID: 5346166192551930475, guid: 3c712e7311e002f43a06f52ce5f0331a, type: 3}
+  - {fileID: 5346166192551930475, guid: 703bfac059a397f4fbd3711cc9e6c41c, type: 3}
+  - {fileID: 2825035923431866801, guid: 5de65d45e9bb560468009bcc359a391f, type: 3}
+  - {fileID: 2825035923431866801, guid: af6ed3bef248a5e409ed2b38738af995, type: 3}
+  - {fileID: 5346166192551930475, guid: 183213289dd4ccc45be570cb1feeaf61, type: 3}
+  - {fileID: 5346166192551930475, guid: 915d19e2e4a9a2148951f7b25842b494, type: 3}
+  - {fileID: 5346166192551930475, guid: 703bfac059a397f4fbd3711cc9e6c41c, type: 3}
+  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
+  - {fileID: 5346166192551930475, guid: 183213289dd4ccc45be570cb1feeaf61, type: 3}
+  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
+  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 2825035923431866801, guid: a907dcb574dc5ac4ab1de70487abd16e, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 2825035923431866801, guid: a907dcb574dc5ac4ab1de70487abd16e, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
+  - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
+  - {fileID: 2825035923431866801, guid: af6ed3bef248a5e409ed2b38738af995, type: 3}
+  - {fileID: 5346166192551930475, guid: 3c712e7311e002f43a06f52ce5f0331a, type: 3}
+  - {fileID: 5346166192551930475, guid: 3c712e7311e002f43a06f52ce5f0331a, type: 3}
+  - {fileID: 5346166192551930475, guid: 3c712e7311e002f43a06f52ce5f0331a, type: 3}
+  objectsPerPhase: 18

@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2e5213bd31a97342a32fd9127d60618, type: 3}
+  m_Name: MoaiEye
+  m_EditorClassIdentifier: 
+  duration: 0.3
+  curve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 6.483143
+      outSlope: 6.483143
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.18822469
+    - serializedVersion: 3
+      time: 0.115241975
+      value: 0.5680796
+      inSlope: 3.6749818
+      outSlope: 3.6749818
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.08749818
+    - serializedVersion: 3
+      time: 0.5009687
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.19837189
+    - serializedVersion: 3
+      time: 0.8719966
+      value: 0.5633172
+      inSlope: -3.8224127
+      outSlope: -3.8224127
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.103314
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: -4.6852355
+      outSlope: -4.6852355
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.22668855
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  start: {x: 0, y: 0, z: 0}
+  end: {x: 1, y: 1, z: 0}

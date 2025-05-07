@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPrefabs:
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
-  objectsPerPhase: 24
+  objectsPerPhase: 6

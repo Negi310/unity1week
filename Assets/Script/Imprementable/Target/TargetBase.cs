@@ -18,8 +18,8 @@ public abstract class TargetBase : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    protected virtual void OnEnable() => EventBus.OnReceiveSmash += OnSmash;
-    protected virtual void OnDisable() => EventBus.OnReceiveSmash -= OnSmash;
+    public virtual void OnEnable() => EventBus.OnReceiveSmash += OnSmash;
+    public virtual void OnDisable() => EventBus.OnReceiveSmash -= OnSmash;
 
     protected virtual void OnSmash(float inputPower)
     {
@@ -46,7 +46,7 @@ public abstract class TargetBase : MonoBehaviour
         gameObject.SetActive(false); // または Destroy(gameObject);
     }
 
-    protected virtual void TrackCenter()
+    public virtual void TrackCenter()
     {
         TrackDisable();
         if (isLanded || isntTrack ) return;
@@ -55,7 +55,7 @@ public abstract class TargetBase : MonoBehaviour
         transform.position = pos;
     }
 
-    protected virtual void TrackDisable()
+    public virtual void TrackDisable()
     {
         if (rb.linearVelocity.x > 3f)
         {

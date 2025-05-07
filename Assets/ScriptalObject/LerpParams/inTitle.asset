@@ -73,5 +73,5 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
-  start: {x: -77, y: 500}
-  end: {x: -77, y: 50}
+  start: {x: -178.16, y: 900}
+  end: {x: -178.16, y: 100}

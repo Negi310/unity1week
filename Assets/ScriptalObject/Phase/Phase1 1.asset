@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a92ee856340e1d46976acacc7bf4602, type: 3}
-  m_Name: Phase2
+  m_Name: Phase1 1
   m_EditorClassIdentifier: 
   targetPrefabs:
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
   - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
-  objectsPerPhase: 24
+  objectsPerPhase: 6

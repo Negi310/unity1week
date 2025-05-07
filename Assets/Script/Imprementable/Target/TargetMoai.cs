@@ -3,17 +3,17 @@ using Cysharp.Threading.Tasks;
 
 public class TargetMoai : TargetBase
 {
-    [SerializeField] private Transform moaiEye;
+    public Transform moaiEye;
 
-    [SerializeField] private LerpParams eyeParam;
+    public LerpParams eyeParam;
 
-    protected override void OnEnable()
+    public override void OnEnable()
     {
         base.OnEnable();
         EventBus.OnMoaiEyeGlow += HandleEyeGlow;
     }
 
-    protected override void OnDisable()
+    public override void OnDisable()
     {
         base.OnDisable();
         EventBus.OnMoaiEyeGlow -= HandleEyeGlow;
@@ -29,13 +29,23 @@ public class TargetMoai : TargetBase
         isLanded = true;
     }
 
-    private void HandleEyeGlow()
+    public virtual void HandleEyeGlow()
     {
+        if (!isLanded && GameManager.I.CurrentState != GameState.Playing) return;
         EyeGlow().Forget();
     }
 
-    private async UniTask EyeGlow()
+    public async UniTask EyeGlow()
     {
-        await UniTask.Yield();
+        await eyeParam.RunLerp(value => moaiEye.localScale = (Vector3)value);
+    }
+
+    public override void TrackCenter()
+    {
+        TrackDisable();
+        if (isLanded || isntTrack ) return;
+        Vector2 pos = transform.position;
+        pos.x = Mathf.MoveTowards(pos.x, 0f, 1.5f * Time.fixedDeltaTime);
+        transform.position = pos;
     }
 }
