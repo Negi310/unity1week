@@ -110,7 +110,7 @@ public class AnimationManager : MonoBehaviour
             param[10].RunLerp(value => scoreRect.anchoredPosition = (Vector2)value)
         );
         await param[11].RunLerp(value => resultRect.anchoredPosition = (Vector2)value);
-        await DOTweenHelper.LerpAsync(0f, to, 3f, curve, (value) =>
+        await DOTweenHelper.LerpAsync(0f, to, 2f, curve, (value) =>
             {
                 int scoreInt = (int)value;
                 scoreText.text =  $"Score: {scoreInt}";

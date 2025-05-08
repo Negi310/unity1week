@@ -31,7 +31,7 @@ public class TargetMoai : TargetBase
 
     public virtual void HandleEyeGlow()
     {
-        if (!isLanded && GameManager.I.CurrentState != GameState.Playing) return;
+        if (!isLanded || GameManager.I.CurrentState != GameState.Playing) return;
         EyeGlow().Forget();
     }
 

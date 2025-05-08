@@ -31,10 +31,9 @@ public class PhaseManager : MonoBehaviour
         if (objectOutCount >= phases[currentPhaseIndex].GetPerPhase())
         {
             objectOutCount = 0;
-            currentPhaseIndex++;
-            if (currentPhaseIndex > phases.Length)
+            if (currentPhaseIndex < phases.Length - 1)
             {
-                currentPhaseIndex = phases.Length;
+                currentPhaseIndex++;
             }
         }
         SpawnNext();

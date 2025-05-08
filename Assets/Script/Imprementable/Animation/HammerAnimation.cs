@@ -29,11 +29,12 @@ public class HammerAnimation : MonoBehaviour
 
     private async UniTask AnimateHammer(float hammerSpeed)
     {
+        if (GameManager.I.CurrentState != GameState.Playing) return;
         await UniTask.WhenAll(
             hammerParam[0].RunLerp(value => hammer.position = (Vector3)value),
             hammerParam[1].RunLerp(value => hammer.rotation = (Quaternion)value)
         );
-        Debug.Log(cachedResult.score);
+        
         EventBus.ReceiveScore(cachedResult.score);
         EventBus.ReceiveSmash(cachedResult.power);
 
