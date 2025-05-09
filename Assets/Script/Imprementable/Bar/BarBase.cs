@@ -29,9 +29,10 @@ public abstract class BarBase : MonoBehaviour
         isRunning = 1;
         duration = barDuration;
         currentValue = minValue;
-        targetValue = Random.Range(minValue + 20f, maxValue - 20f);
+        targetValue = Random.Range(minValue + 40f, maxValue - 20f);
         targetValue2 = targetValue;
         targetValue3 = targetValue;
+        EventBus.BarStarted(this);
         BarLoopAsync().Forget();
     }
     public virtual void StopBar()
@@ -43,6 +44,8 @@ public abstract class BarBase : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Space) && GameManager.I.CurrentState == GameState.Playing)
         {
+            AudioManager.I.PlaySE(SE.Name.Bar);
+            EventBus.BarPushed();
             StopBar();
         }
     }

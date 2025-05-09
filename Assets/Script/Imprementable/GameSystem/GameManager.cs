@@ -36,7 +36,7 @@ public class GameManager : MonoBehaviour
             case GameState.Playing when PreviousState == GameState.Pause:
                 EventBus.EscapePause();
                 break;
-            case GameState.Result:
+            case GameState.Result when PreviousState != GameState.Result:
                 EventBus.StateChanged(GameState.Result);
                 break;
             case GameState.Pause:

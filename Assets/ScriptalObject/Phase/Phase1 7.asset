@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Phase1 7
   m_EditorClassIdentifier: 
   targetPrefabs:
-  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
-  - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
-  - {fileID: 5346166192551930475, guid: 80bbbf9748625624082c7e097be8a80a, type: 3}
+  - {fileID: 5346166192551930475, guid: 5b80686bc84108e4689b72f7eaf60040, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 2825035923431866801, guid: c1ccf19efa7de6a4d890cf6714170a4b, type: 3}
   - {fileID: 2825035923431866801, guid: c1ccf19efa7de6a4d890cf6714170a4b, type: 3}
   - {fileID: 2825035923431866801, guid: 409ef3bee29963a43af5e2a2e17f8b34, type: 3}
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
@@ -23,4 +23,8 @@ MonoBehaviour:
   - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
   - {fileID: 2825035923431866801, guid: 409ef3bee29963a43af5e2a2e17f8b34, type: 3}
   - {fileID: 2825035923431866801, guid: c1ccf19efa7de6a4d890cf6714170a4b, type: 3}
-  objectsPerPhase: 18
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 5346166192551930475, guid: 35d972fa37aee40499093ddb282f48cb, type: 3}
+  - {fileID: 5346166192551930475, guid: 5b80686bc84108e4689b72f7eaf60040, type: 3}
+  objectsPerPhase: 12

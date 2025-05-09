@@ -13,9 +13,16 @@ public class ScoreManager : MonoBehaviour
     private void OnDisable() => EventBus.OnReceiveScore -= AddScore;
     private void AddScore(int score)
     {
-        
+        if (score >= 650)
+        {
+            comboCount += 1;
+        }
+        else
+        {
+            comboCount = 0;
+        }
+        score += (int)(0.01f * comboCount * score);
         scores += score;
-        comboCount = score >= 100 ? comboCount++ : 0;
         EventBus.ScoreChanged(new ScoreResult(scores, score, comboCount));
         
         if (GetRank() != currentRank)
@@ -27,10 +34,10 @@ public class ScoreManager : MonoBehaviour
 
     private string GetRank()
     {
-        if (scores >= 2000) return "S";
-        if (scores >= 1500) return "A";
-        if (scores >= 1000) return "B";
-        if (scores >= 500) return "C";
+        if (scores >= 1350000) return "S";
+        if (scores >= 450000) return "A";
+        if (scores >= 150000) return "B";
+        if (scores >= 50000) return "C";
         return "D";
     }
 

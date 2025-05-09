@@ -53,7 +53,11 @@ public class SE
 {
     public enum Name
     {
-        
+        Click,
+        Pause,
+        Result,
+        Bar,
+        Hammer
     }
 
     public Name seName;
@@ -65,7 +69,8 @@ public class BGM
 {
     public enum Name
     {
-        
+        Title,
+        Play
     }
 
     public Name bgmName;

@@ -40,13 +40,13 @@ public class AnimationManager : MonoBehaviour
     private void OnEnable()
     {
         EventBus.OnStateChanged += HandleStateChange;
-        EventBus.OnBarStopped += HandleBarFlash;
+        EventBus.OnBarPushed += HandleBarFlash;
         EventBus.OnEscapePause += HandleEscapePause;
     }
     private void OnDisable()
     {
         EventBus.OnStateChanged -= HandleStateChange;
-        EventBus.OnBarStopped -= HandleBarFlash;
+        EventBus.OnBarPushed -= HandleBarFlash;
         EventBus.OnEscapePause -= HandleEscapePause;
     }
 
@@ -74,13 +74,14 @@ public class AnimationManager : MonoBehaviour
         }
     }
 
-    private void HandleBarFlash(ImputResult result)
+    private void HandleBarFlash()
     {
         BarFlash().Forget();
     }
 
     private async UniTask ShowTitleScreen()
     {
+        AudioManager.I.PlayBGM(BGM.Name.Title);
         await param[0].RunLerp(value => transitioner.material.SetFloat("_Transition", (float)value));
         await param[2].RunLerp(value => titleRect.anchoredPosition = (Vector2)value);
         await param[3].RunLerp(value => startAlpha.alpha = (float)value);
@@ -88,6 +89,8 @@ public class AnimationManager : MonoBehaviour
 
     private async UniTask StartGameplay()
     {
+        AudioManager.I.StopBGM();
+        AudioManager.I.PlayBGM(BGM.Name.Play);
         startButton.SetActive(false);
         await UniTask.WhenAll(
             param[4].RunLerp(value => startAlpha.alpha = (float)value),
@@ -104,6 +107,7 @@ public class AnimationManager : MonoBehaviour
 
     private async UniTask ShowResult()
     {
+        AudioManager.I.PlaySE(SE.Name.Result);
         float to = (float)sm.scores;
         await UniTask.WhenAll(
             param[9].RunLerp(value => barRect.anchoredPosition = (Vector2)value),
