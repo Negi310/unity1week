@@ -37,6 +37,7 @@ public class HammerAnimation : MonoBehaviour
         
         EventBus.ReceiveScore(cachedResult.score);
         EventBus.ReceiveSmash(cachedResult.power);
+        AudioManager.I.PlaySE(SE.Name.Hammer);
 
         await UniTask.WhenAll(
             hammerParam[2].RunLerp(value => hammer.position = (Vector3)value),

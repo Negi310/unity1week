@@ -16,4 +16,4 @@ MonoBehaviour:
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
   - {fileID: 5346166192551930475, guid: c6e417976922b1749804f3cf965eb485, type: 3}
   - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
-  objectsPerPhase: 6
+  objectsPerPhase: 12

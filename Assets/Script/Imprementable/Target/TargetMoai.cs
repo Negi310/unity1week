@@ -45,7 +45,15 @@ public class TargetMoai : TargetBase
         TrackDisable();
         if (isLanded || isntTrack ) return;
         Vector2 pos = transform.position;
-        pos.x = Mathf.MoveTowards(pos.x, 0f, 1.5f * Time.fixedDeltaTime);
+        pos.x = Mathf.MoveTowards(pos.x, 0f, 2f * Time.fixedDeltaTime);
         transform.position = pos;
+    }
+
+    public override void TrackDisable()
+    {
+        if (rb.linearVelocity.x > 6f)
+        {
+            isntTrack = true;
+        }
     }
 }

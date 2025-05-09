@@ -10,14 +10,14 @@ public class BarDisplay : MonoBehaviour
     [SerializeField] private RectTransform targetMarker2;
     [SerializeField] private RectTransform targetMarker3;
     [SerializeField] private GameObject moaiShutter;     // モアイ用のシャッター表示
-
-    [SerializeField] private BarBase bar;                // 対象となるバー
     [SerializeField] private RectTransform barArea;      // バーの全体領域（UI上の範囲）
 
     private float barWidth;
+    private BarBase bar;                // 対象となるバー
 
     private void OnEnable()
     {
+        EventBus.OnBarStarted += BarSet;
         EventBus.OnMoaiLanded += ShutterClose;
         EventBus.OnDoubleMoaiLanded += ShutterClose;
         EventBus.OnTripleMoaiLanded += ShutterClose;
@@ -30,6 +30,7 @@ public class BarDisplay : MonoBehaviour
 
     private void OnDisable()
     {
+        EventBus.OnBarStarted -= BarSet;
         EventBus.OnMoaiLanded -= ShutterClose;
         EventBus.OnDoubleMoaiLanded -= ShutterClose;
         EventBus.OnTripleMoaiLanded -= ShutterClose;
@@ -47,7 +48,7 @@ public class BarDisplay : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (bar.isRunning == 0) return;
+        if (bar == null || bar.isRunning == 0) return;
 
         DisplayBar(bar.currentValue, barFill);
         DisplayBar(bar.targetValue, targetMarker);
@@ -61,6 +62,11 @@ public class BarDisplay : MonoBehaviour
         Vector2 pos = rect.anchoredPosition;
         pos.x = normalizedValue * barWidth;
         rect.anchoredPosition = pos;
+    }
+
+    private void BarSet(BarBase targetBar)
+    {
+        bar = targetBar;
     }
 
     private void ShutterOpen(float barDuration)

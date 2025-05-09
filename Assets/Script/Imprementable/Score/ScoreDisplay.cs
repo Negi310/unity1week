@@ -10,6 +10,7 @@ public class ScoreDisplay : MonoBehaviour
     [SerializeField] private Vector3[] scoreScale;
     [SerializeField] private Vector2[] scorePos;
     [SerializeField] private CanvasGroup addedScoreCanvas;
+     [SerializeField] private CanvasGroup comboCanvas;
     [SerializeField] private TextMeshProUGUI totalScoreText;
     [SerializeField] private TextMeshProUGUI addedScoreText;
     [SerializeField] private TextMeshProUGUI comboText;
@@ -53,7 +54,10 @@ public class ScoreDisplay : MonoBehaviour
     {
         if (result.comboCount == 0) return;
         comboText.text = $"{result.comboCount}Combo!";
-        await DOTweenHelper.LerpAsync(scoreScale[0], scoreScale[1], 1f, scoreCurve[1], (value) => comboText.rectTransform.localScale = value);
+        await UniTask.WhenAll(
+            DOTweenHelper.LerpAsync(0f, 1f, 0.7f, scoreCurve[2], (value) => comboCanvas.alpha = value),
+            DOTweenHelper.LerpAsync(scoreScale[0], scoreScale[1], 1f, scoreCurve[1], (value) => comboText.rectTransform.localScale = value)
+        );
     }
 
     private async UniTask AddedScoreAnimation()

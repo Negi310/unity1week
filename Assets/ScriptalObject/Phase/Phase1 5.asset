@@ -25,4 +25,4 @@ MonoBehaviour:
   - {fileID: 2825035923431866801, guid: 409ef3bee29963a43af5e2a2e17f8b34, type: 3}
   - {fileID: 5346166192551930475, guid: 3d15e9d36fadbae43b30da695f0e367f, type: 3}
   - {fileID: 2825035923431866801, guid: 409ef3bee29963a43af5e2a2e17f8b34, type: 3}
-  objectsPerPhase: 18
+  objectsPerPhase: 12

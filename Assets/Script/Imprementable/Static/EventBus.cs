@@ -17,10 +17,12 @@ public static class EventBus
     public static event Action OnMoaiEyeGlow;
     public static event Action<BarBase> OnBarStarted;
     public static event Action<ImputResult> OnBarStopped;
+    public static event Action OnBarPushed;
     public static event Action<ScoreResult> OnScoreChanged;
     public static event Action<string> OnScoreRanked;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnEscapePause;
+
 
     public static void RequestNextTarget() => OnRequestNextTarget?.Invoke();
     public static void BlockLanded(float duration) => OnBlockLanded?.Invoke(duration);
@@ -36,6 +38,7 @@ public static class EventBus
     public static void MoaiEyeGlow() => OnMoaiEyeGlow?.Invoke();
     public static void BarStarted(BarBase bar) => OnBarStarted?.Invoke(bar);
     public static void BarStopped(ImputResult result) => OnBarStopped?.Invoke(result);
+    public static void BarPushed() => OnBarPushed?.Invoke();
     public static void ScoreChanged(ScoreResult result) => OnScoreChanged?.Invoke(result);
     public static void ScoreRanked(string rank) => OnScoreRanked?.Invoke(rank);
     public static void StateChanged(GameState gameState) => OnStateChanged?.Invoke(gameState);

@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 
 public class BarDoubleDynaBlock : BarDoubleBlock
 {
+    private int targetDirection = -1;
     private int target2Direction = 1;
 
     private void OnEnable() => EventBus.OnDoubleDynaBlockLanded += OnStartBar;
@@ -17,17 +18,29 @@ public class BarDoubleDynaBlock : BarDoubleBlock
     {
         while (isRunning > 0)
         {
-            targetValue += target2Direction * Time.deltaTime * 0.5f * duration;
+            targetValue += targetDirection * Time.deltaTime * 0.5f * duration;
+            targetValue2 += target2Direction * Time.deltaTime * 0.5f * duration;
+            targetValue3 = targetValue;
 
             if (targetValue >= maxValue)
             {
                 targetValue = maxValue;
-                direction = -1;
+                targetDirection = -1;
             }
             else if (targetValue <= minValue)
             {
                 targetValue = minValue;
-                direction = 1;
+                targetDirection = 1;
+            }
+            if (targetValue2 >= maxValue)
+            {
+                targetValue2 = maxValue;
+                target2Direction = -1;
+            }
+            else if (targetValue2 <= minValue)
+            {
+                targetValue2 = minValue;
+                target2Direction = 1;
             }
             await UniTask.Yield();
         }

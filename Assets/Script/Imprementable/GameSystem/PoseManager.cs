@@ -8,6 +8,7 @@ public class PoseManager : MonoBehaviour
         {
             if(GameManager.I.CurrentState == GameState.Playing)
             {
+                AudioManager.I.PlaySE(SE.Name.Pause);
                 GameManager.I.SetState(GameState.Pause);
                 Time.timeScale = 0;
             }
