@@ -22,6 +22,7 @@ public static class EventBus
     public static event Action<string> OnScoreRanked;
     public static event Action<GameState> OnStateChanged;
     public static event Action OnEscapePause;
+    public static event Action OnLoadScene;
 
 
     public static void RequestNextTarget() => OnRequestNextTarget?.Invoke();
@@ -43,4 +44,5 @@ public static class EventBus
     public static void ScoreRanked(string rank) => OnScoreRanked?.Invoke(rank);
     public static void StateChanged(GameState gameState) => OnStateChanged?.Invoke(gameState);
     public static void EscapePause() => OnEscapePause?.Invoke();
+    public static void LoadScene() => OnLoadScene?.Invoke();
 }
