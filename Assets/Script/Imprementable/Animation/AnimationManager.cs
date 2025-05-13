@@ -37,6 +37,8 @@ public class AnimationManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
 
+    [SerializeField] private string GameScene;
+
     private void OnEnable()
     {
         EventBus.OnStateChanged += HandleStateChange;
@@ -128,8 +130,7 @@ public class AnimationManager : MonoBehaviour
         playCanvas.SetActive(false);
         resultCanvas.SetActive(false);
         await param[1].RunLerp(value => transitioner.material.SetFloat("_Transition", (float)value));
-        await Task.Delay(1000);
-        SceneManager.LoadScene("GameScene");
+        EventBus.LoadScene();
     }
 
     private async UniTask BarFlash()
