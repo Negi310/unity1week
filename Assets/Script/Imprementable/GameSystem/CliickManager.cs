@@ -17,4 +17,13 @@ public class CliickManager : MonoBehaviour
         AudioManager.I.StopBGM();
         GameManager.I.SetState(GameState.End);
     }
+
+    public virtual void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            OnPlay();
+            OnTitle();
+        }
+    }
 }

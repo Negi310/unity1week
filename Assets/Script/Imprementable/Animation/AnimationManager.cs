@@ -37,8 +37,6 @@ public class AnimationManager : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI scoreText;
 
-    [SerializeField] private string GameScene;
-
     private void OnEnable()
     {
         EventBus.OnStateChanged += HandleStateChange;

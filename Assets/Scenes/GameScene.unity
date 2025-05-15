@@ -2048,7 +2048,6 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   scoreText: {fileID: 1715850753}
-  GameScene: GameScene2
 --- !u!1 &553687260
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,30 +2397,30 @@ MonoBehaviour:
   spawnPoint: {fileID: 778822256}
   phases:
   - {fileID: 11400000, guid: 81ec132ac8267434c9cc40426a79e5b0, type: 2}
-  - {fileID: 11400000, guid: e65a3a0f69be952478d4deb0567d22bc, type: 2}
-  - {fileID: 11400000, guid: df8a134ad23fc8c479160384f1f61ea0, type: 2}
-  - {fileID: 11400000, guid: 54059d74748b3ab4baf51a9f8fa81043, type: 2}
-  - {fileID: 11400000, guid: dedfb40b1022f214a94f3638e2f908ae, type: 2}
-  - {fileID: 11400000, guid: 678015f1e6ebae64ba14b1d4d979658e, type: 2}
-  - {fileID: 11400000, guid: 78a47beafc7022d4c93469df8bb25dbf, type: 2}
-  - {fileID: 11400000, guid: 65f6d3bdfb75cbe4490cfd7bc0285e65, type: 2}
-  - {fileID: 11400000, guid: 35334b64afacda44c859ab0e383e5734, type: 2}
-  - {fileID: 11400000, guid: 11d73b737c145544ea084e63b59c97a2, type: 2}
-  - {fileID: 11400000, guid: 145740244d6879d4c9ec976104a551b4, type: 2}
-  - {fileID: 11400000, guid: bf382a40802c2ac4cbba182330a56f9d, type: 2}
-  - {fileID: 11400000, guid: 549711e2d3815da40afcdde1f2480025, type: 2}
-  - {fileID: 11400000, guid: b933487eb5fe1084b801a5d8a1e414c6, type: 2}
-  - {fileID: 11400000, guid: f1a009eb696dd5445af8a663dfc55ad6, type: 2}
-  - {fileID: 11400000, guid: 6d915bfa8cae2674190cd9303c3dacc8, type: 2}
-  - {fileID: 11400000, guid: ce1b3341273aea24dae53a3a8ad5e27d, type: 2}
-  - {fileID: 11400000, guid: 979ca06bd5fb9c441a9e4d55e154d0ea, type: 2}
-  - {fileID: 11400000, guid: 9c7ec3006bd4a214f8ee43fd3405496d, type: 2}
-  - {fileID: 11400000, guid: b940d8dd2629fcb42a9f2bca5d998609, type: 2}
-  - {fileID: 11400000, guid: 08bf8ed8413b31c4ba488fc7ad4a94cd, type: 2}
-  - {fileID: 11400000, guid: 2e2e97777e83897479ddfb074935b784, type: 2}
-  - {fileID: 11400000, guid: 4558664ed3b95c04595297e5f98c07f6, type: 2}
-  - {fileID: 11400000, guid: 61332e6eeb7b776469bf23214cec2e07, type: 2}
-  - {fileID: 11400000, guid: 3700fa291dd2dc647a79a0a80eeea593, type: 2}
+  - {fileID: 11400000, guid: e02e8cd64f242f348989e3c8417c956f, type: 2}
+  - {fileID: 11400000, guid: 30c3903e944be0743802fccca7d95822, type: 2}
+  - {fileID: 11400000, guid: 5d62db3db9d31f44aa680fc49a2b072f, type: 2}
+  - {fileID: 11400000, guid: 203c371cd4b89ed45afe016e9a58dfce, type: 2}
+  - {fileID: 11400000, guid: fb595b6ac6cbc964da321448389e5eb7, type: 2}
+  - {fileID: 11400000, guid: b7f77fd549b40d64093d94089acfa72f, type: 2}
+  - {fileID: 11400000, guid: 934b34fb92a8a77428183e38c435e9c8, type: 2}
+  - {fileID: 11400000, guid: bb1813eb21241474a995e67843b2d4e9, type: 2}
+  - {fileID: 11400000, guid: 107924284ec1e6c4591be8a438a1c0ad, type: 2}
+  - {fileID: 11400000, guid: 3ec844e6b61b1864d9089047d1bc09b7, type: 2}
+  - {fileID: 11400000, guid: 9d487add49f00fc48a3ef9560ba2da39, type: 2}
+  - {fileID: 11400000, guid: 465887302c2bcae4396d4713ef76fd18, type: 2}
+  - {fileID: 11400000, guid: 28e384d0e7337dc4fa2131bef4e2e0c6, type: 2}
+  - {fileID: 11400000, guid: 6c06080ed71fa944d95bc2997d03d075, type: 2}
+  - {fileID: 11400000, guid: 502ad76cfe9ea6c48a4fa526e72b8d58, type: 2}
+  - {fileID: 11400000, guid: 54075c60fb0987841a8f671ddea61570, type: 2}
+  - {fileID: 11400000, guid: c6cf1ed2ad09ff5488acc269e0528b6d, type: 2}
+  - {fileID: 11400000, guid: 4b15c7640fadf124c900ee006be4208a, type: 2}
+  - {fileID: 11400000, guid: 2b699015b4da1874c89237c74b292649, type: 2}
+  - {fileID: 11400000, guid: 55b3c3ba2689c204e8c5b5cf424cb894, type: 2}
+  - {fileID: 11400000, guid: a9ebcc451f72532488c1a1ddb10a5fcd, type: 2}
+  - {fileID: 11400000, guid: e38c0eb9620697b40970b375181dd821, type: 2}
+  - {fileID: 11400000, guid: 7f785c7ddd9eb2a469c4a9d0d09e036d, type: 2}
+  - {fileID: 11400000, guid: d6e1ab19e4b8ab8499744414ca704b00, type: 2}
 --- !u!1 &778822255
 GameObject:
   m_ObjectHideFlags: 0

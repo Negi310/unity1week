@@ -8,13 +8,12 @@ public class ContactOverPoint : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (isOver) return;
-        Over().Forget();
+        Over();
     }
 
-    private async UniTask Over()
+    private void Over()
     {
         isOver = true;
-        await Task.Delay(400);
         GameManager.I.SetState(GameState.Result);
     }
 }
